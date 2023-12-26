@@ -1,5 +1,5 @@
 from turtle import Turtle
-from random import choice, randint
+import secrets
 
 COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
 STARTING_NUM = 16
@@ -18,7 +18,7 @@ class CarManager:
     def populate_cars(self):
         while len(self.car_list) < self.num_cars:
             car = self.get_car()
-            car.setpos(x=randint(a=-50, b=280), y=randint(a=-240, b=270))
+            car.setpos(x=secrets.SystemRandom().randint(a=-50, b=280), y=secrets.SystemRandom().randint(a=-240, b=270))
             self.car_list.append(car)
     def add_cars(self):
         if len(self.car_list) > 0:
@@ -35,7 +35,7 @@ class CarManager:
         car_unit = Turtle()
         car_unit.up()
         car_unit.shape("square")
-        car_unit.color(choice(COLORS))
+        car_unit.color(secrets.SystemRandom().choice(COLORS))
         car_unit.shapesize(stretch_len=2, stretch_wid=1)
         return car_unit
 
@@ -50,7 +50,7 @@ class CarManager:
     def spawn_car(self):
         if self.time_counter % self.spawn_interval == 0:
             car = self.get_car()
-            car.setpos(x=300, y=randint(a=-250, b=250))
+            car.setpos(x=300, y=secrets.SystemRandom().randint(a=-250, b=250))
             self.car_list.append(car)
 
 
